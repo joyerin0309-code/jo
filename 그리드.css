@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* .item {
+    border: 1px solid #000;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.item1,
+.item5 {
+    background-color: antiquewhite;
+}
+
+.item2,
+.item7 {
+    background-color: chartreuse;
+}
+
+.item3,
+.item9 {
+    background-color: coral;
+}
+
+.item4,
+.item6 {
+    background-color: fuchsia;
+}
+
+.item8,
+.item10 {
+    background-color: deepskyblue;
+} */
+
+.container {
+    display: grid;
+
+    /* grid-template-columns: 300px 300px 300px 300px; */
+
+    grid-template-columns: repeat(4, 300px);
+
+    /* grid-template-columns: 150px repeat(2, 300px) 200px; */
+
+    /* grid-template-rows: 100px 200px 150px; */
+    grid-template-rows: repeat(3, 150px);
+
+    /* grid-template-columns: 20% 30% 40%; */
+
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-columns: 1fr 2fr 1fr 2fr; */
+
+
+
+    /* 행이 몇개 만들어질지 모르지만 전체적으로 자동으로 행 높이를 지정해주고싶은 경우 grid-auto-rows 사용 */
+    grid-auto-rows: 100px;
+
+    /* column-gap: 20px; */
+    /* row-gap: 30px; */
+    grid-gap: 30px 30px;
+    /* row-gap column-gap */
+
+}
+
+.item1 {
+    /* grid-column-start: 1;
+    grid-column-end: 3;
+
+    grid-row-start: 1;
+    grid-row-end: 3; */
+
+    /* grid-column: 1 / 3;
+    grid-row: 1 / 3; */
+
+    grid-column: 2 / span 2;
+    grid-row: 1 / span3;
+
+    /* 마지막 칼럼까지 지정 시 -1 */
+    grid-column: 2 / -1;
+
+    /* grid-area: row-start  / column-start / row-end / column-end */
+    grid-area: 1 / 2 / 3 / 4;
+
+}
+
+.imge {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img-container {
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr); areas쓰면 굳이 쓸 필요 없은 */
+    grid-auto-rows: 250px;
+    grid-gap: 10px;
+
+    grid-template-areas:
+        "imge1 imge1 imge1"
+        "imge2 imge3 imge3"
+        "imge2 imge4 imge7"
+        "imge5 imge6 imge7"
+    ;
+}
+
+.imge1 {
+    grid-area: imge1;
+}
+
+.imge2 {
+    grid-area: imge2;
+}
+
+.imge3 {
+    grid-area: imge3;
+}
+
+.imge4 {
+    grid-area: imge4;
+}
+
+.imge5 {
+    grid-area: imge5;
+}
+
+.imge6 {
+    grid-area: imge6;
+}
+
+.imge7 {
+    grid-area: imge7;
+}
+
+@media(max-width:1024px) {
+    .img-container {
+        grid-template-areas:
+            "imge1 imge1"
+            "imge2 imge3"
+            "imge2 imge2"
+            "imge5 imge7"
+            "imge6 imge7"
+        ;
+    }
+}
+
+@media(max-width:768px) {
+    .img-container {
+        grid-template-areas:
+            "imge1"
+            "imge2"
+            "imge3"
+            "imge4"
+            "imge5"
+            "imge6"
+            "imge7"
+
+
+        ;
+
+        grid-auto-rows: auto;
+    }
+}
